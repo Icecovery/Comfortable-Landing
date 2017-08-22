@@ -105,7 +105,7 @@ public class CL_ControlTool : PartModule
                     if (vessel.Splashed)
                     {
                         buoy.Inflate();
-                        this.part.buoyancy = buoy.buoyancyAfterInflated;//this is a real buoy!
+                        this.part.buoyancy = buoy.buoyancyAfterInflated;//this is a really buoy!
                         alreadyInflated = true;
                     }
                 }
