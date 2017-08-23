@@ -5,4 +5,6 @@ It can keep your Kerbals safe even in the last minute of a mission.
 
 It will be released soooooooooooooooooooooooooooooooooooooooooooon™.
 
-[WIKI](https://github.com/Icecovery/Comfortable-Landing/wiki)
+[Wiki page](https://github.com/Icecovery/Comfortable-Landing/wiki)
+
+[Icecovery Studio on Space Dock](https://spacedock.info/profile/IcecoveryStudio)
