@@ -50,7 +50,7 @@ public class CL_ControlTool : PartModule
         burn = part.Modules["CL_LandingBurn"] as CL_LandingBurn;
         if (burn == null)
         {
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected");
+            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected CL_LandingBurn");
         }
 
         buoy = part.Modules["CL_Buoy"] as CL_Buoy;
@@ -73,7 +73,13 @@ public class CL_ControlTool : PartModule
             Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected any CL Module.");
         }
 
-        originalCrashTolerance = this.part.crashTolerance;
+        if (buoy != null && airbag != null)//They are repetitive.
+        {
+            airbag = null;//So it will not activate in FixedUpdate.
+            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
+        }
+
+        originalCrashTolerance = this.part.crashTolerance;//For airbag
     }
     
     public void FixedUpdate()
@@ -100,7 +106,7 @@ public class CL_ControlTool : PartModule
                     if (vessel.Splashed)
                     {
                         buoy.Inflate();
-                        this.part.buoyancy = buoy.buoyancyAfterInflated;//this is a really buoy!
+                        this.part.buoyancy = buoy.buoyancyAfterInflated;//This is a really buoy!
                         alreadyInflated = true;
                     }
                 }
@@ -113,7 +119,7 @@ public class CL_ControlTool : PartModule
                     if (vessel.radarAltitude <= airbag.inflateAltitude)
                     {
                         airbag.Inflate();
-                        this.part.crashTolerance = airbag.crashToleranceAfterInflated;
+                        this.part.crashTolerance = airbag.crashToleranceAfterInflated;//This is a really airbag!
                         alreadyInflatedAirBag = true;
                     }
                 }
@@ -126,7 +132,7 @@ public class CL_ControlTool : PartModule
                     if (vessel.Landed)
                     {
                         airbag.Deflate();
-                        this.part.crashTolerance = originalCrashTolerance;
+                        this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
                         alreadyDeflatedAirBag = true;
                     }
                 }
