@@ -5,7 +5,6 @@ public class CL_ControlTool : PartModule
 {
     [KSPField]
     public bool IsActivate = false;
-    private float originalCrashTolerance = 0.0f;
     private bool alreadyFired = false;
     private bool alreadyInflated = false;
     private bool alreadyInflatedAirBag = false;
@@ -32,8 +31,8 @@ public class CL_ControlTool : PartModule
        
     }
 
-    [KSPAction("Toggle", KSPActionGroup.None, guiName = "Toggle Pre-Landing Mode")]
-    public void ActionActivate(KSPActionParam param)
+    [KSPAction("Toggle Pre-Landing Mode", KSPActionGroup.None)]
+    public void ActionToggle(KSPActionParam param)
     {
         if (IsActivate == false)
         {
@@ -43,6 +42,18 @@ public class CL_ControlTool : PartModule
         {
             Deactivate();
         }
+    }
+
+    [KSPAction("Activate Pre-Landing Mode", KSPActionGroup.None)]
+    public void ActionActivate(KSPActionParam param)
+    {
+            Activate();
+    }
+
+    [KSPAction("Deactivate Pre-Landing Mode", KSPActionGroup.None)]
+    public void ActionDeactivate(KSPActionParam param)
+    {
+            Deactivate();
     }
 
     public override void OnStart(PartModule.StartState state)
@@ -78,8 +89,6 @@ public class CL_ControlTool : PartModule
             airbag = null;//So it will not activate in FixedUpdate.
             Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
         }
-
-        originalCrashTolerance = this.part.crashTolerance;//For airbag
     }
     
     public void FixedUpdate()
@@ -106,7 +115,6 @@ public class CL_ControlTool : PartModule
                     if (vessel.Splashed)
                     {
                         buoy.Inflate();
-                        this.part.buoyancy = buoy.buoyancyAfterInflated;//This is a really buoy!
                         alreadyInflated = true;
                     }
                 }
@@ -119,7 +127,6 @@ public class CL_ControlTool : PartModule
                     if (vessel.radarAltitude <= airbag.inflateAltitude)
                     {
                         airbag.Inflate();
-                        this.part.crashTolerance = airbag.crashToleranceAfterInflated;//This is a really airbag!
                         alreadyInflatedAirBag = true;
                     }
                 }
@@ -132,7 +139,6 @@ public class CL_ControlTool : PartModule
                     if (vessel.Landed)
                     {
                         airbag.Deflate();
-                        this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
                         alreadyDeflatedAirBag = true;
                     }
                 }

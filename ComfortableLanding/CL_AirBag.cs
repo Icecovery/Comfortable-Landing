@@ -32,6 +32,7 @@ public class CL_AirBag : PartModule
 
     private Transform DeflateTransform = null;
     private Transform InflateTransform = null;
+    private float originalCrashTolerance = 0.0f;
 
     public override void OnStart(StartState state)
     {
@@ -83,6 +84,8 @@ public class CL_AirBag : PartModule
             volume2 = 1.0f;
         }
         audioSource.volume = volume2;
+
+        originalCrashTolerance = this.part.crashTolerance;
     }
 
     public void Inflate()
@@ -92,6 +95,7 @@ public class CL_AirBag : PartModule
         InflateAnim.allowManualControl = true;
         InflateAnim.Toggle();
         InflateAnim.allowManualControl = false;
+        this.part.crashTolerance = crashToleranceAfterInflated;//This is a really airbag!
         Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Inflate!");
     }
 
@@ -101,6 +105,7 @@ public class CL_AirBag : PartModule
         audioSource2.PlayOneShot(deflateSound);
         InflateTransform.localScale = new Vector3(inflateScaleX, inflateScaleY, inflateScaleZ);
         DeflateTransform.localScale = new Vector3(deflateScaleX, deflateScaleY, deflateScaleZ);
+        this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
         Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Touchdown!");
     }
 }

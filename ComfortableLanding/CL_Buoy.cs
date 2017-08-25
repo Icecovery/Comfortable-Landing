@@ -50,6 +50,7 @@ public class CL_Buoy : PartModule
         InflateAnim.allowManualControl = true;
         InflateAnim.Toggle();
         InflateAnim.allowManualControl = false;
+        this.part.buoyancy = buoyancyAfterInflated;//This is a really buoy!
         Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Inflate!");
     }
 }
