@@ -103,8 +103,8 @@ public class CL_AirBag : PartModule
     {
         ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Touchdown!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
         audioSource2.PlayOneShot(deflateSound);
-        InflateTransform.localScale = new Vector3(inflateScaleX, inflateScaleY, inflateScaleZ);
         DeflateTransform.localScale = new Vector3(deflateScaleX, deflateScaleY, deflateScaleZ);
+        InflateTransform.localScale = new Vector3(inflateScaleX, inflateScaleY, inflateScaleZ);
         this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
         Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Touchdown!");
     }
