@@ -69,7 +69,7 @@ public class CL_ControlTool : PartModule
         {
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_Buoy");
         }
-        airbag=part.Modules["CL_Airbag"] as CL_AirBag;
+        airbag=part.Modules["CL_AirBag"] as CL_AirBag;
 
         if(airbag==null)
         {
