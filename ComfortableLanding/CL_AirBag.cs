@@ -38,7 +38,7 @@ public class CL_AirBag : PartModule
     {
         InflateAnim = part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
         if (InflateAnim == null)
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Animation Missing!");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
 
         DeflateTransform = base.part.FindModelTransform(DeflateTransformName);
         InflateTransform = base.part.FindModelTransform(InflateTransformName);
@@ -96,7 +96,7 @@ public class CL_AirBag : PartModule
         InflateAnim.Toggle();
         InflateAnim.allowManualControl = false;
         this.part.crashTolerance = crashToleranceAfterInflated;//This is a really airbag!
-        Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Inflate!");
+        Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Inflate!");
     }
 
     public void Deflate()
@@ -106,6 +106,6 @@ public class CL_AirBag : PartModule
         DeflateTransform.localScale = new Vector3(deflateScaleX, deflateScaleY, deflateScaleZ);
         InflateTransform.localScale = new Vector3(inflateScaleX, inflateScaleY, inflateScaleZ);
         this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
-        Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Touchdown!");
+        Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Touchdown!");
     }
 }

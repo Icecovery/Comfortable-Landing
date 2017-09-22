@@ -20,7 +20,7 @@ public class CL_Buoy : PartModule
     {
         InflateAnim=part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
         if (InflateAnim == null)
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Animation Missing!");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
 
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.bypassListenerEffects = true;
@@ -51,6 +51,6 @@ public class CL_Buoy : PartModule
         InflateAnim.Toggle();
         InflateAnim.allowManualControl = false;
         this.part.buoyancy = buoyancyAfterInflated;//This is a really buoy!
-        Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Inflate!");
+        Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Inflate!");
     }
 }

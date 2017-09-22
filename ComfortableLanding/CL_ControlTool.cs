@@ -61,19 +61,19 @@ public class CL_ControlTool : PartModule
         burn = part.Modules["CL_LandingBurn"] as CL_LandingBurn;
         if (burn == null)
         {
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected CL_LandingBurn");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_LandingBurn");
         }
 
         buoy = part.Modules["CL_Buoy"] as CL_Buoy;
         if (buoy == null)
         {
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected CL_Buoy");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_Buoy");
         }
-        airbag=part.Modules["CL_airbag"] as CL_AirBag;
+        airbag=part.Modules["CL_Airbag"] as CL_AirBag;
 
         if(airbag==null)
         {
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected CL_AirBagg");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_AirBag");
         }
 
         if (burn == null && buoy == null && airbag == null)
@@ -81,13 +81,13 @@ public class CL_ControlTool : PartModule
             Events["Deactivate"].guiActive = false;
             Events["Activate"].guiActive = false;
             IsActivate = false;
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Not detected any CL Module.");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected any CL Module.");
         }
 
         if (buoy != null && airbag != null)//They are repetitive.
         {
             airbag = null;//So it will not activate in FixedUpdate.
-            Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
         }
     }
     
@@ -149,7 +149,7 @@ public class CL_ControlTool : PartModule
                 Events["Deactivate"].guiActive = false;
                 Events["Activate"].guiActive = false;
                 IsActivate = false;
-                Debug.Log("<color=#FF8C00ff>Comfortable Landing:</color>The vessel has landed or splashed, deactivate pre-landing mode.");
+                Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>The vessel has landed or splashed, deactivate pre-landing mode.");
             }
         }
     }
