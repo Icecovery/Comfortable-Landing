@@ -2,7 +2,7 @@
 ![Travis](https://i.imgur.com/ynQjKEY.png)
 
 ![Travis](https://img.shields.io/badge/KSP%20version-1.3.0-66ccff.svg?style=flat-square) 
-![Travis](https://img.shields.io/badge/MOD%20version-0.1-orange.svg?style=flat-square)
+![Travis](https://img.shields.io/badge/MOD%20version-1.0-orange.svg?style=flat-square)
 
 **Forum page:** [Forum](https://forum.kerbalspaceprogram.com/index.php?/topic/165762-130comfortable-landing/&tab=comments#comment-3178500)
 
