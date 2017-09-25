@@ -12,6 +12,7 @@ public class CL_Buoy : PartModule
 
     [KSPField]
     public float buoyancyAfterInflated = 1.2f;
+    public Vector3 COBAfterInflated = new Vector3(0.0f, 0.0f, 0.0f);
 
     public string playSoundPath = "ComfortableLanding/Sounds/Inflate_B";
     public float volume = 1.0f;
@@ -51,6 +52,7 @@ public class CL_Buoy : PartModule
         InflateAnim.Toggle();
         InflateAnim.allowManualControl = false;
         this.part.buoyancy = buoyancyAfterInflated;//This is a really buoy!
+        this.part.CenterOfBuoyancy = COBAfterInflated;
         Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Inflate!");
     }
 }

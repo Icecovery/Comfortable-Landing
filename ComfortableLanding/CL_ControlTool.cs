@@ -119,9 +119,10 @@ public class CL_ControlTool : PartModule
                     }
                 }
             }
-            //Inflate Airbag
+            //Airbag
             if (airbag != null)
             {
+                //Inflate Airbag
                 if (alreadyInflatedAirBag == false)
                 {
                     if (vessel.radarAltitude <= airbag.inflateAltitude)
@@ -130,17 +131,21 @@ public class CL_ControlTool : PartModule
                         alreadyInflatedAirBag = true;
                     }
                 }
-            }
-            //Deflate Airbag
-            if (airbag != null)
-            {
-                if(alreadyInflatedAirBag==true && alreadyDeflatedAirBag == false)
+                //Deflate Airbag
+                if (alreadyInflatedAirBag == true && alreadyDeflatedAirBag == false)
                 {
                     if (vessel.Landed)
                     {
                         airbag.Deflate();
-                        alreadyDeflatedAirBag = true;
                     }
+                    if (vessel.Splashed)
+                    {
+                        if (airbag.damageAfterSplashed == true)
+                        {
+                            airbag.Deflate(true);
+                        }
+                    }
+                    alreadyDeflatedAirBag = true;
                 }
             }
             //Check
