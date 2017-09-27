@@ -98,7 +98,7 @@ public class CL_AirBag : PartModule
         audioSource.PlayOneShot(inflateSound);
         InflateAnim.allowManualControl = true;
         InflateAnim.Toggle();
-        InflateAnim.allowManualControl = false;
+        //InflateAnim.allowManualControl = false;
         this.part.crashTolerance = crashToleranceAfterInflated;//This is a really airbag!
         this.part.CenterOfBuoyancy = COBAfterInflated;
         this.part.buoyancy = buoyancyAfterInflated;
