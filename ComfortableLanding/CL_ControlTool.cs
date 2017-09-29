@@ -144,6 +144,10 @@ public class CL_ControlTool : PartModule
                         {
                             airbag.Deflate(true);
                         }
+                        else
+                        {
+                            airbag.Deflate(false);
+                        }
                     }
                     alreadyDeflatedAirBag = true;
                 }
