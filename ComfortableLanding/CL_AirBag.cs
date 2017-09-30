@@ -108,7 +108,7 @@ public class CL_AirBag : PartModule
     public void Deflate()
     {
         ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Touchdown!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
-        if ((damageAfterSplashed == true && this.part.Splashed == true)|| this.part.Landed == true)
+        if ((damageAfterSplashed == true && vessel.Splashed) || vessel.Landed)
         {
             audioSource2.PlayOneShot(deflateSound);
             DeflateTransform.localScale = deflateScale;
