@@ -103,20 +103,24 @@ public class CL_AirBag : PartModule
         this.part.CenterOfBuoyancy = COBAfterInflated;
         this.part.buoyancy = buoyancyAfterInflated;
         Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Inflate!");
+
     }
 
     public void Deflate()
     {
         ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Touchdown!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
-        if ((damageAfterSplashed == true && vessel.Splashed) || vessel.Landed)
-        {
-            audioSource2.PlayOneShot(deflateSound);
-            DeflateTransform.localScale = deflateScale;
-            InflateTransform.localScale = inflateScale;
-            this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
-            this.part.buoyancy = originalBuoyancy;
-            this.part.CenterOfBuoyancy = originalCOB;
-        }
+        audioSource2.PlayOneShot(deflateSound);
+        DeflateTransform.localScale = deflateScale;
+        InflateTransform.localScale = inflateScale;
+        this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
+        this.part.buoyancy = originalBuoyancy;
+        this.part.CenterOfBuoyancy = originalCOB;
+        Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Touchdown!");
+    }
+
+    public void Touchdown()
+    {
+        ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Touchdown!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
         Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Touchdown!");
     }
 }

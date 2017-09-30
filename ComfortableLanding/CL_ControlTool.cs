@@ -134,9 +134,19 @@ public class CL_ControlTool : PartModule
                 //Deflate Airbag
                 if (alreadyInflatedAirBag == true && alreadyDeflatedAirBag == false)
                 {
-                    if (vessel.Landed || vessel.Splashed)
+                    if (vessel.Landed)
                     {
                         airbag.Deflate();
+                        alreadyDeflatedAirBag = true;
+                    }
+                    else if (vessel.Splashed && airbag.damageAfterSplashed == true)
+                    {
+                        airbag.Deflate();
+                        alreadyDeflatedAirBag = true;
+                    }
+                    else if(vessel.Splashed && airbag.damageAfterSplashed == false)
+                    {
+                        airbag.Touchdown();
                         alreadyDeflatedAirBag = true;
                     }
                 }
