@@ -3,16 +3,16 @@ using KSP.Localization;
 
 public class CL_ControlTool : PartModule
 {
+    CL_LandingBurn burn;
+    CL_Buoy buoy;
+    CL_AirBag airbag;
+
     [KSPField]
     public bool IsActivate = false;
     private bool alreadyFired = false;
     private bool alreadyInflated = false;
     private bool alreadyInflatedAirBag = false;
     private bool alreadyDeflatedAirBag = false;
-
-    CL_LandingBurn burn;
-    CL_Buoy buoy;
-    CL_AirBag airbag;
 
     [KSPEvent(name = "Activate", guiName = "Activate Pre-Landing Mode", active = true, guiActive = true)]
     public void Activate()
@@ -69,8 +69,8 @@ public class CL_ControlTool : PartModule
         {
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_Buoy");
         }
-        airbag=part.Modules["CL_AirBag"] as CL_AirBag;
 
+        airbag=part.Modules["CL_AirBag"] as CL_AirBag;
         if(airbag==null)
         {
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected CL_AirBag");
@@ -84,11 +84,13 @@ public class CL_ControlTool : PartModule
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected any CL Module.");
         }
 
+        /*
         if (buoy != null && airbag != null)//They are repetitive.
         {
             airbag = null;//So it will not activate in FixedUpdate.
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
         }
+        */
     }
     
     public void FixedUpdate()
@@ -144,7 +146,7 @@ public class CL_ControlTool : PartModule
                         airbag.Deflate();
                         alreadyDeflatedAirBag = true;
                     }
-                    else if(vessel.Splashed && airbag.damageAfterSplashed == false)
+                    else if (vessel.Splashed && airbag.damageAfterSplashed == false)
                     {
                         airbag.Touchdown();
                         alreadyDeflatedAirBag = true;

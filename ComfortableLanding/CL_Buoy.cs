@@ -3,10 +3,8 @@ using KSP.Localization;
 
 public class CL_Buoy : PartModule
 {
-    [KSPField]
     ModuleAnimateGeneric InflateAnim;
 
-    [KSPField]
     AudioClip playSound;
     AudioSource audioSource;
 
@@ -19,9 +17,24 @@ public class CL_Buoy : PartModule
     public string playSoundPath = "ComfortableLanding/Sounds/Inflate_B";
     public float volume = 1.0f;
 
+    public string animName = null;
+    public int animLayer = 0;
+
     public override void OnStart(StartState state)
     {
-        InflateAnim=part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
+        /*
+        InflateAnim =part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
+        if (InflateAnim == null)
+            Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
+        */
+        foreach (ModuleAnimateGeneric anim in part.Modules)
+        {
+            if (anim.animationName == animName && anim.layer == animLayer)
+            {
+                InflateAnim = anim;
+                break;
+            }
+        }
         if (InflateAnim == null)
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
 

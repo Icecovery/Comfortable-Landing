@@ -3,7 +3,6 @@ using KSP.Localization;
 
 public class CL_LandingBurn : PartModule
 {
-    [KSPField]
     ModuleEngines engine;
 
     [KSPField]
