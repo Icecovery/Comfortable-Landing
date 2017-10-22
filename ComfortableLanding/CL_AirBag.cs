@@ -33,16 +33,15 @@ public class CL_AirBag : PartModule
     private float originalBuoyancy = 1.0f;
     private Vector3 originalCOB = new Vector3(0.0f, 0.0f, 0.0f);
 
-    public string animName = null;
-    public int animLayer = 0;
+    //public string animName = null;
+    //public int animLayer = 0;
 
     public override void OnStart(StartState state)
     {
-        /*
         InflateAnim = part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
         if (InflateAnim == null)
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
-        */
+        /*
         foreach (ModuleAnimateGeneric anim in part.Modules)
         {
             if (anim.animationName == animName && anim.layer == animLayer)
@@ -51,6 +50,7 @@ public class CL_AirBag : PartModule
                 break;
             }
         }
+        */
         if (InflateAnim == null)
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
 

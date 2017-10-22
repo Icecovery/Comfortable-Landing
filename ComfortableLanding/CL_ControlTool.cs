@@ -84,13 +84,13 @@ public class CL_ControlTool : PartModule
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Not detected any CL Module.");
         }
 
-        /*
+        ///* Not yet resolved
         if (buoy != null && airbag != null)//They are repetitive.
         {
             airbag = null;//So it will not activate in FixedUpdate.
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Detected CL_Buoy and CL_ Airbag, only activate CL_Buoy.");
         }
-        */
+        //*/
     }
     
     public void FixedUpdate()

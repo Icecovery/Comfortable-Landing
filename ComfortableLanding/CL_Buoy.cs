@@ -17,16 +17,15 @@ public class CL_Buoy : PartModule
     public string playSoundPath = "ComfortableLanding/Sounds/Inflate_B";
     public float volume = 1.0f;
 
-    public string animName = null;
-    public int animLayer = 0;
+    //public string animName = null;
+    //public int animLayer = 0;
 
     public override void OnStart(StartState state)
     {
-        /*
         InflateAnim =part.Modules["ModuleAnimateGeneric"] as ModuleAnimateGeneric;
         if (InflateAnim == null)
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
-        */
+        /*
         foreach (ModuleAnimateGeneric anim in part.Modules)
         {
             if (anim.animationName == animName && anim.layer == animLayer)
@@ -35,6 +34,7 @@ public class CL_Buoy : PartModule
                 break;
             }
         }
+        */
         if (InflateAnim == null)
             Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Animation Missing!");
 
