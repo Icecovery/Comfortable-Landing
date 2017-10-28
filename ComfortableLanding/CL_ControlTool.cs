@@ -138,18 +138,22 @@ public class CL_ControlTool : PartModule
                 {
                     if (vessel.Landed)
                     {
+                        //Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Landed!");
                         airbag.Deflate();
                         alreadyDeflatedAirBag = true;
                     }
                     else if (vessel.Splashed && airbag.damageAfterSplashed == true)
                     {
+                        //Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Splashed with damage");
                         airbag.Deflate();
                         alreadyDeflatedAirBag = true;
                     }
                     else if (vessel.Splashed && airbag.damageAfterSplashed == false)
                     {
+                        //Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Splashed with out damage");
                         airbag.Touchdown();
                         alreadyDeflatedAirBag = true;
+
                     }
                 }
             }

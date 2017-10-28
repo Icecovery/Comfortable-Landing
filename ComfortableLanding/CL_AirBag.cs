@@ -17,7 +17,7 @@ public class CL_AirBag : PartModule
     public Vector3 deflateScale = new Vector3(1.0f, 1.0f, 1.0f);
     public string InflateTransformName = "InflateTransform";
     public Vector3 inflateScale = new Vector3(0.1f, 0.1f, 0.1f);
-    public bool damageAfterSplashed = false;
+    public bool damageAfterSplashed = true; 
     public float buoyancyAfterInflated = 1.2f;
     public Vector3 COBAfterInflated = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -112,7 +112,7 @@ public class CL_AirBag : PartModule
         InflateAnim.allowManualControl = true;
         InflateAnim.Toggle();
         //InflateAnim.allowManualControl = false;
-        this.part.crashTolerance = crashToleranceAfterInflated;//This is a really airbag!
+        this.part.crashTolerance = crashToleranceAfterInflated;//This is an really airbag!
         this.part.CenterOfBuoyancy = COBAfterInflated;
         this.part.buoyancy = buoyancyAfterInflated;
         Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Inflate!");
@@ -121,11 +121,11 @@ public class CL_AirBag : PartModule
 
     public void Deflate()
     {
-        ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Touchdown!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
+        ScreenMessages.PostScreenMessage("<color=#00ff00ff>[ComfortableLanding]Deflate!</color>", 3f, ScreenMessageStyle.UPPER_CENTER);
         audioSource2.PlayOneShot(deflateSound);
         DeflateTransform.localScale = deflateScale;
         InflateTransform.localScale = inflateScale;
-        this.part.crashTolerance = originalCrashTolerance;//Not a airbag any more.
+        this.part.crashTolerance = originalCrashTolerance;//Not an airbag any more.
         this.part.buoyancy = originalBuoyancy;
         this.part.CenterOfBuoyancy = originalCOB;
         Debug.Log("<color=#FF8C00ff>[Comfortable Landing]</color>Touchdown!");
